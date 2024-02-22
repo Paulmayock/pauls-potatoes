@@ -20,9 +20,9 @@ class PotatoMenu:
     """
     Potato menu class type
     """
-    def __init__(self, name, message):
+    def __init__(self, name):
         self.name = name
-        self.message = message
+        
 
     def print(self):
         """
@@ -34,10 +34,10 @@ class PotatoType:
     """
     Potato type class
     """
-    def __init__(self, type, price, label):
+    def __init__(self, type, price):
         self.type = type
         self.price = price
-        self.label = label   
+           
 
 
 potato_toppings = {
@@ -59,8 +59,8 @@ def greeting():
     Function to greet the customer or
     cancel if they decide not to order
     """
+    print("Hi, Welcome to Paul's Potatoes!")
     while True:
-        print("Hi, Welcome to Paul's Potatoes!")
         print("Would you like to place an order? [Y]es or [N]o\n")
         user_choice = input("Enter: \n")
         user_choice = user_choice.strip()
@@ -73,7 +73,7 @@ def greeting():
         else:
             print("Invalid entry, please try again")
             print("Make sure you entered Y or N\n")
-            return greeting()
+            continue
         
 def select_potato():
     """
@@ -109,5 +109,11 @@ def select_potato():
 
 def main():
     """
-    
+    Main function which will
+    include all the functions 
+    to run the code
     """
+    greeting()
+
+if __name__ == '__main__':
+    main()    
