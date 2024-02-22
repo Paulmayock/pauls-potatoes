@@ -1,5 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
+from datetime import datetime
+import sys  # Allows the user to exit the system
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -14,9 +16,9 @@ SHEET = GSPREAD_CLIENT.open('pauls_potatoes')
 
 orders = SHEET.worksheet('orders')
 
-class PizzaMenu:
+class PotatoMenu:
     """
-    Pizza menu class type
+    Potato menu class type
     """
     def __init__(self, name, message):
         self.name = name
@@ -24,330 +26,88 @@ class PizzaMenu:
 
     def print(self):
         """
-        Prints specific string for the selected pizza
+        Prints a string for the selected baked potato
         """
         return self.message + " " + self.name
-
-
-class PizzaSize:
+    
+class PotatoType:
     """
-    Pizza size class type
+    Potato type class
     """
-    def __init__(self, inch, price, label):
-        self.inch = inch
+    def __init__(self, type, price, label):
+        self.type = type
         self.price = price
-        self.label = label
+        self.label = label   
 
 
-pizza_menu = {
-    "1": PizzaMenu("Margherita", "lovely"),
-    "2": PizzaMenu("BBQ Chicken", "amazing"),
-    "3": PizzaMenu("Pepperoni", "scrumptious"),
-    "4": PizzaMenu("Hawaiian", "delicious"),
-    "5": PizzaMenu("Veggie", "tasty"),
-    "6": PizzaMenu("Meat Lover", "unreal")
+potato_toppings = {
+    "1": PotatoMenu("All the cheeses"),
+    "2": PotatoMenu("The vegan with all the veggies"),
+    "3": PotatoMenu("BBQ chicken, peppers, onions, bbq sauce"),
+    "4": PotatoMenu("Pulled pork, slaw"),
+    "5": PotatoMenu("Taco beef, cheese, peppers"),
+}  
+
+type_price = {
+    "F": PotatoType("Fries", 8),
+    "B": PotatoType("Baked", 9),
+    "R": PotatoType("Roastys", 11),
 }
 
-size_price = {
-    "S": PizzaSize("9 INCH", 5, "Small"),
-    "M": PizzaSize("11 INCH", 8, "Medium"),
-    "L": PizzaSize("13 INCH", 11, "Large"),
-}
-
-
-def welcome():
+def greeting():
     """
-    Function to welcome the customer or
-    leave if they dont want to order
+    Function to greet the customer or
+    cancel if they decide not to order
     """
     while True:
-        print("Hello, Welcome to Fred's Pizzas!")
+        print("Hi, Welcome to Paul's Potatoes!")
         print("Would you like to place an order? [Y]es or [N]o\n")
         user_choice = input("Enter: \n")
         user_choice = user_choice.strip()
         if user_choice == "Y" or user_choice == "y":
-            print("\nLets get you the menu...\n")
+            print("\nPlease choose from our tasty menu...\n")
             break
         elif user_choice == "N" or user_choice == "n":
-            print("Hopefully see you next time!")
+            print("Hope to see you again!")
             sys.exit()
         else:
-            print("That's not quite right")
-            print("Make sure you either enetered Y or N\n")
-            return welcome()
-
-
-def select_pizza():
+            print("Invalid entry, please try again")
+            print("Make sure you entered Y or N\n")
+            return greeting()
+        
+def select_potato():
     """
-    Function to select the pizza
+    Function to select the potato topping
     """
-    for index, pizza in pizza_menu.items():
-        print(index, pizza.name)
+    for index, potato in potato_toppings.items():
+        print(index, orders.name)
     print(
         "\nPlease pick the corresponding number\n"
-        "to the pizza you wish to order.\n"
-        "If you've changed your mind,\n"
-        "press E to leave the shop.\n"
+        "to the potato topping you wish to order.\n"
+        "If you changed your mind,\n"
+        "press E to leave.\n"
     )
     while True:
         user_input = input("Enter number: \n")
         user_input = user_input.strip().lower()
         if user_input == "e":
-            print("We hope to see you another day!")
+            print("We hope to see you again")
             sys.exit()
             break
-        elif user_input in pizza_menu:
+        elif user_input in potato_toppings:
             print(
-                "\nYou have chosen our",
-                pizza_menu[user_input].print(), "\n"
+                "\nYou have chosen",
+                potato_toppings[user_input].print(), "\n"
             )
             break
         else:
             print(
                 "\nSorry this is invalid\n"
-                "Please enter number between 1-6 or E\n"
+                "Please enter number between 1-5 or E\n"
             )
-    return pizza_menu[user_input]
-
-
-def select_size():
-    """
-    Function to select the size
-    """
-    for index, size in size_price.items():
-        print(index, "-", size.label, "-", size.inch, "-", "£", size.price)
-    while True:
-        print(
-            "\nPlease select what size pizza you want.\n"
-            "Enter either S or M OR L\n"
-            "Press E to leave the shop.\n"
-        )
-        user_size_input = input("Enter size: \n")
-        user_size_input = user_size_input.strip().upper()
-        if user_size_input == "E":
-            print("We hope to see you soon again!")
-            sys.exit()
-            break
-        elif user_size_input in size_price:
-            print(
-                "\nYou have chosen a size",
-                size_price[user_size_input].label,
-                size_price[user_size_input].inch,
-                "pizza\n"
-            )
-            break
-        else:
-            print(
-                "\nSorry this is invalid"
-            )
-
-    return size_price[user_size_input]
-
-
-def number_of_pizzas():
-    """
-    Function to select quantity of pizzas
-    """
-    print(
-        "How many pizzas would you like?\n"
-        "You can pick up to a quantity of 6 pizzas.\n"
-        "Press E to leave the shop.\n"
-    )
-    while True:
-        user_quantity_input = input("Enter quantity: \n")
-        user_quantity_input = user_quantity_input.strip().lower()
-        if user_quantity_input == "e":
-            print("We hope to see you soon again!")
-            sys.exit()
-            break
-        elif user_quantity_input >= str(1) and user_quantity_input <= str(6):
-            print("\nYou have selected a quantity of", user_quantity_input)
-            break
-        else:
-            print(
-                "\nSorry this is invalid\n"
-            )
-    return user_quantity_input
-
-
-def add_dip():
-    """
-    Function allows user to add garlic dip to their order
-    """
-    print("\nWould you like to add a garlic dip for £1?")
-    print("[Y]es or [N]o")
-    print("Or press E to leave the shop\n")
-    while True:
-        user_dip_input = input("Enter: \n")
-        user_dip_input = user_dip_input.strip().upper()
-        if user_dip_input == "Y":
-            print("\nLets add that to your order!")
-            break
-        elif user_dip_input == "N":
-            print("\nNo problem!")
-            break
-        elif user_dip_input == "E":
-            print("\nSo close to the best pizza in town. See you soon!")
-            sys.exit()
-            break
-        else:
-            print("\nThat's not quite right")
-            print("Make sure you either entered Y or N\n")
-
-    return user_dip_input
-
-
-def total_order(quantity, size, pizza, dip):
-    """
-    Function to display the order back to the customer
-    """
-    print("\nYour order is....\n")
-    result = quantity + " x " + size.label + " " + size.inch + " " + pizza.name
-    if quantity == str(1):
-        result += " pizza"
-    else:
-        result += " pizzas"
-    if dip.lower() == "y":
-        result += " with dip"
-    print(result)
-    return result
-
-
-def total_cost(size, quantity, dip):
-    """
-    Function to calculate total cost
-    """
-    total = size.price * int(quantity)
-    if dip == "y" or dip == "Y":
-        total += 1
-    print("Total cost: £", total)
-    return total
-
-
-def confirm_order():
-    """
-    Function to confirm order
-    """
-    print(
-        "\nTo confirm this order please select\n"
-        "[Y]es or [N]o \n(No will restart the order)\n"
-    )
-    while True:
-        user_confirm = input("Enter: \n")
-        user_confirm = user_confirm.strip().upper()
-        if user_confirm == "Y":
-            print("\nConfirmed! ")
-            break
-        elif user_confirm == "N":
-            print("\nLets try ordering again...\n")
-            break
-        else:
-            print("\nThat's not quite right")
-            print("Make sure you either entered Y or N\n")
-
-    return user_confirm
-
-
-def user_name():
-    """
-    Function to collect user name
-    """
-    print("\nNow... lets take your details\n")
-    while True:
-        name = input("Enter your first name: \n").title()
-        if name.isalpha():
-            break
-        else:
-            print(
-                "\nPlease make sure you entered your "
-                "name correctly"
-            )
-            print("Try again\n")
-
-    return name
-
-
-def user_number(name):
-    """
-    Function to collect user number
-    """
-    while True:
-        number = input("\nEnter your 11 digit mobile number: \n")
-        if number.isdigit() and len(number) == 11:
-            print(
-                "\nThank you",
-                name,
-                "we will use",
-                number,
-                "to contact you \n"
-                "if any problems\n")
-            break
-        else:
-            print(
-                "\nPlease make sure you entered your "
-                "number correctly"
-            )
-            print("Try again")
-
-    return number
-
-
-def receipt(order, price):
-    """
-    Function to generate recipt
-    """
-    print(
-        "Thank you from Fred's Pizzas\n"
-        "Your order has been processed \n"
-        "and will be ready for collection in 20 minutes!\n"
-    )
-    print("Here is your receipt")
-    print("---------------------------------")
-    print("Fred's Pizzas\n123 Big street\nLondon\n")
-    identity = str(uuid.uuid4())
-    print("Order #")
-    print(identity)
-    print(order)
-    print("£" + str(price))
-    now = datetime.now()
-    time = now.strftime("%H:%M:%S")
-    print(time)
-    print("---------------------------------\n")
-
-    return {"id": identity, "time": time}
-
-
-def update_spreadsheet(row):
-    """
-    Function to update google worksheet with data obtained
-    """
-    orders_worksheet.append_row(row)
-
+    return potato_toppings[user_input]
 
 def main():
     """
-    Main function, which includes
-    all functions to run the program
+    
     """
-    welcome()
-    while True:
-        pizza = select_pizza()
-        size = select_size()
-        quantity = number_of_pizzas()
-        dip = add_dip()
-        order = total_order(quantity, size, pizza, dip)
-        price = total_cost(size, quantity, dip)
-        is_confirmed = confirm_order()
-        if is_confirmed.upper() == "Y":
-            break
-    name = user_name()
-    number = user_number(name)
-    receipt_result = receipt(order, price)
-    row = [
-        name, number, pizza.name, size.label, quantity, dip, price,
-        receipt_result["time"], receipt_result["id"]
-    ]
-    update_spreadsheet(row)
-
-
-main()
