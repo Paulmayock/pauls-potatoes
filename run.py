@@ -80,7 +80,7 @@ def select_potato():
     Function to select the potato topping
     """
     for index, potato in potato_toppings.items():
-        print(index, orders.name)
+        print(index, orders.order)
     print(
         "\nPlease pick the corresponding number\n"
         "to the potato topping you wish to order.\n"
@@ -105,7 +105,32 @@ def select_potato():
                 "\nSorry this is invalid\n"
                 "Please enter number between 1-5 or E\n"
             )
-    return potato_toppings[user_input]
+            continue
+
+def number_of_potato_orders():
+    """
+    Function to select how many orders
+    """
+    print(
+        "How many quantites of your order would you like?\n"
+        "You can pick up to a quantity of 10 orders.\n"
+        "Press E to cancel your order.\n"
+    )
+    while True:
+        user_quantity_input = input("Enter quantity: \n")
+        user_quantity_input = user_quantity_input.strip().lower()
+        if user_quantity_input == "e":
+            print("We hope to see you soon again!")
+            sys.exit()
+            break
+        elif user_quantity_input >= str(1) and user_quantity_input <= str(10):
+            print("\nYou have selected a quantity of", user_quantity_input)
+            break
+        else:
+            print(
+                "\nSorry this is invalid\n"
+            )
+    return user_quantity_input        
 
 def main():
     """
@@ -114,6 +139,7 @@ def main():
     to run the code
     """
     greeting()
+    select_potato()
 
 if __name__ == '__main__':
     main()    
