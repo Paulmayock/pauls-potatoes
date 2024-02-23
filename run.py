@@ -16,6 +16,7 @@ SHEET = GSPREAD_CLIENT.open('pauls_potatoes')
 
 orders = SHEET.worksheet('orders')
 
+
 class PotatoMenu:
     """
     Potato menu class type
@@ -23,22 +24,22 @@ class PotatoMenu:
     def __init__(self, name, message):
         self.name = name
         self.message = message
-        
 
     def print(self):
         """
         Prints a string for the selected baked potato
         """
         return self.message + " " + self.name
-    
+
+
 class PotatoType:
+
     """
     Potato type class
     """
     def __init__(self, type, price):
         self.type = type
         self.price = price
-           
 
 
 potato_toppings = {
@@ -47,13 +48,14 @@ potato_toppings = {
     "3": PotatoMenu("BBQ chicken, peppers, onions, bbq sauce", "cluck cluck"),
     "4": PotatoMenu("Pulled pork, slaw", "oink oink"),
     "5": PotatoMenu("Taco beef, cheese, peppers", "mexican moomoo"),
-}  
+}
 
 type_price = {
     "F": PotatoType("Fries", 8),
     "B": PotatoType("Baked", 9),
     "R": PotatoType("Roastys", 11),
 }
+
 
 def greeting():
     """
@@ -75,7 +77,8 @@ def greeting():
             print("Invalid entry, please try again")
             print("Make sure you entered Y or N\n")
             continue
-        
+
+
 def select_potato():
     """
     Function to select the potato topping
@@ -108,6 +111,7 @@ def select_potato():
             )
             continue
 
+
 def number_of_potato_orders():
     """
     Function to select how many orders
@@ -124,23 +128,26 @@ def number_of_potato_orders():
             print("We hope to see you soon again!")
             sys.exit()
             break
-        elif user_quantity_input >= str(1) and user_quantity_input <= str(10):
+        elif user_quantity_input >= str(1) and user_quantity_input >= str(10):
             print("\nYou have selected a quantity of", user_quantity_input)
             break
         else:
             print(
-                "\nSorry this is invalid\n"
+                "\nSorry please choose between 1 and 10\n"
             )
-    return user_quantity_input        
+    return user_quantity_input
+
 
 def main():
     """
     Main function which will
-    include all the functions 
+    include all the functions
     to run the code
     """
     greeting()
     select_potato()
+    number_of_potato_orders()
+
 
 if __name__ == '__main__':
-    main()    
+    main()
