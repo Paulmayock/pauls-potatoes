@@ -40,7 +40,6 @@ class PotatoType:
     def __init__(self, type, price):
         self.type = type
         self.price = price
-        
 
 
 potato_toppings = {
@@ -79,6 +78,7 @@ def greeting():
             print("Make sure you entered Y or N\n")
             continue
 
+
 def select_type():
     """
     Function to select the potato type
@@ -105,6 +105,7 @@ def select_type():
             return selected_type
         else:
             print("\nSorry, this is invalid.")
+
 
 def select_potato():
     """
@@ -164,6 +165,28 @@ def number_of_potato_orders():
             )
     return user_quantity_input
 
+def confirm_order():
+    """
+    Function to confirm order
+    """
+    print(
+        "\nTo confirm this order please select\n"
+        "[Y]es or [N]o \n(No will restart the order)\n"
+    )
+    while True:
+        user_confirm = input("Enter: \n")
+        user_confirm = user_confirm.strip().upper()
+        if user_confirm == "Y":
+            print("\nConfirmed! ")
+            break
+        elif user_confirm == "N":
+            print("\nLets try ordering again...\n")
+            break
+        else:
+            print("\nThat's not quite right")
+            print("Make sure you either entered Y or N\n")
+
+    return user_confirm
 
 def main():
     """
@@ -175,6 +198,8 @@ def main():
     select_type()
     select_potato()
     number_of_potato_orders()
+    confirm_order()
+    
 
 
 if __name__ == '__main__':
