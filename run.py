@@ -40,6 +40,7 @@ class PotatoType:
     def __init__(self, type, price):
         self.type = type
         self.price = price
+        
 
 
 potato_toppings = {
@@ -51,9 +52,9 @@ potato_toppings = {
 }
 
 type_price = {
-    "F": PotatoType("Fries", 8),
-    "B": PotatoType("Baked", 9),
-    "R": PotatoType("Roastys", 11),
+    "F": {"price": 8, "name": "Fries"},
+    "B": {"price": 9, "name": "Baked"},
+    "R": {"price": 11, "name": "Roastys"},
 }
 
 
@@ -78,6 +79,32 @@ def greeting():
             print("Make sure you entered Y or N\n")
             continue
 
+def select_type():
+    """
+    Function to select the potato type
+    """
+    for index, info in type_price.items():
+        print(f"{index} - €{info['price']}")
+    while True:
+        print(
+            "\nPlease select what type of potato you wish to order.\n"
+            "Enter either F for fries, B for baked or R for roasties.\n"
+            "Press E to leave the shop.\n"
+        )
+        user_type_input = input("Enter type: \n").strip().upper()
+
+        if user_type_input == "E":
+            print("We hope to see you soon again!")
+            sys.exit()
+            break
+        elif user_type_input in type_price:
+            selected_type = type_price[user_type_input]
+            print(
+                f"\nYou have chosen a {selected_type['name']} type potato for €{selected_type['price']}\n"
+            )
+            return selected_type
+        else:
+            print("\nSorry, this is invalid.")
 
 def select_potato():
     """
@@ -145,6 +172,7 @@ def main():
     to run the code
     """
     greeting()
+    select_type()
     select_potato()
     number_of_potato_orders()
 
