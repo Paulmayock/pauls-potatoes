@@ -20,8 +20,9 @@ class PotatoMenu:
     """
     Potato menu class type
     """
-    def __init__(self, name):
+    def __init__(self, name, message):
         self.name = name
+        self.message = message
         
 
     def print(self):
@@ -41,11 +42,11 @@ class PotatoType:
 
 
 potato_toppings = {
-    "1": PotatoMenu("All the cheeses"),
-    "2": PotatoMenu("The vegan with all the veggies"),
-    "3": PotatoMenu("BBQ chicken, peppers, onions, bbq sauce"),
-    "4": PotatoMenu("Pulled pork, slaw"),
-    "5": PotatoMenu("Taco beef, cheese, peppers"),
+    "1": PotatoMenu("All the cheeses", "Cheezy"),
+    "2": PotatoMenu("The vegan with all the veggies", "Vegan delight"),
+    "3": PotatoMenu("BBQ chicken, peppers, onions, bbq sauce", "cluck cluck"),
+    "4": PotatoMenu("Pulled pork, slaw", "oink oink"),
+    "5": PotatoMenu("Taco beef, cheese, peppers", "mexican moomoo"),
 }  
 
 type_price = {
@@ -80,7 +81,7 @@ def select_potato():
     Function to select the potato topping
     """
     for index, potato in potato_toppings.items():
-        print(index, orders.order)
+        print(index, potato.name)
     print(
         "\nPlease pick the corresponding number\n"
         "to the potato topping you wish to order.\n"
