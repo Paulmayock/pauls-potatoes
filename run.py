@@ -1,6 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
 from datetime import datetime
+import uuid  # Taken from webdev to generate random order number
 import sys  # Allows the user to exit the system
 
 SCOPE = [
@@ -181,6 +182,7 @@ def confirm_order():
             break
         elif user_confirm == "N":
             print("\nPlease order again...\n")
+            sys.exit()
             break
         else:
             print("\nYou have entered an incorrect key")
@@ -206,13 +208,13 @@ def user_name():
 
     return name    
 
-def user_number(name):
+def user_number():
     """
     Function to collect user number
     """
     while True:
-        number = input("\nPlease eneter your phone number: \n")
-        if number.isdigit() and len(number) == 11:
+        number = input("\nPlease enter your phone number: \n")
+        if number.isdigit() and len(number) <= 11:
             print(
                 "\nThank you")
             break
@@ -224,6 +226,37 @@ def user_number(name):
             print("Try again")
 
     return number
+
+def receipt():
+    """
+    Function to generate a recipt
+    """
+    print(
+        "Thank you from Fred's Pizzas\n"
+        "Your order has been processed \n"
+        "and will be ready for collection within 15 minutes!\n"
+    )
+    print("RECEIPT")
+    print("---------------------------------")
+    print("Pauls Potatoes\nBridge Street\nWestport\n")
+    identity = str(uuid.uuid4())
+    print("Order #")
+    print(identity)
+    print(orders)
+    print("€" + str(select_type))
+    now = datetime.now()
+    time = now.strftime("%H:%M:%S")
+    print(time)
+    print("---------------------------------\n")
+
+    return {"id": identity, "time": time}
+
+def update_spreadsheet():
+    """
+    Function to update google worksheet with users order info
+    """
+    orders.append_row()
+
 
 def main():
     """
@@ -237,7 +270,9 @@ def main():
     number_of_potato_orders()
     confirm_order()
     user_name()
-    
+    user_number()
+    receipt()
+    update_spreadsheet()
 
 if __name__ == '__main__':
     main()
