@@ -84,6 +84,8 @@ Flow chart to be added
 
 - The order info is added to the google sheet as seen below
 
+![](assests\goggle_spreadsheet.png)
+
 
 
 
