@@ -103,7 +103,7 @@ def select_type():
             selected_type = type_price[user_type_input]
             print(
                 f"\nYou have chosen a {selected_type['name']}"
-                "type potato for €{selected_type['price']}\n"
+                " type potato for €{['price']}\n"
             )
             return selected_type
         else:

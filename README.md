@@ -30,3 +30,32 @@ is then transferred to a google sheet.
 
 - I want a clear and easy to understand way of ordering online
 - I want the spreadsheet to be clear and easy to read.
+
+
+## Design
+
+Flow chart to be added
+
+## Features
+
+### Greeting
+
+When the program is run the user receives a welcome message and the option to place an order
+
+### Menu
+
+The user is prompted to choose which type of potato they would like, fries, baked or roasties by entering the corresponding letter
+
+The potato option will also show the price for each option.
+
+Once the letter is entered the program will display a message of what type of potato chosen the user is given the option to pick what 
+topping they would like between 5 options. The user chooses the option by selected the corresponding number ot each option
+
+Once the user chooses the topping option a message will display what topping they choose.
+
+
+
+
+
+
+
