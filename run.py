@@ -129,17 +129,19 @@ def select_potato():
             sys.exit()
             break
         elif user_input in potato_toppings:
+            selected_potato = user_input
             print(
                 "\nYou have chosen",
                 potato_toppings[user_input].print(), "\n"
             )
-            break
+            return selected_potato
         else:
             print(
                 "\nSorry this is invalid\n"
                 "Please enter number between 1-5 or E\n"
             )
-            continue
+        
+
 
 
 def number_of_potato_orders():
@@ -191,13 +193,15 @@ def confirm_order():
 
     return user_confirm
 
-def user_name():
+def name():
     """
     Function to get users full name
     """
     print("\nPlease add your details\n")
     while True:
         name = input("Enter your full name: \n").title()
+        print(f'name......{name}')
+        print(f'type......{type(name)}')
         if name.isalpha():
             break
         else:
@@ -209,7 +213,7 @@ def user_name():
 
     return name    
 
-def user_number():
+def number():
     """
     Function to collect user number
     """
@@ -267,21 +271,43 @@ def main():
     """
     greeting()
     
+    # Get potato_type variable
     potato_type = select_type()
     price = potato_type['price']
-    print(f'price == {price}')
+    
 
-    select_potato()
-    number_of_potato_orders()
-    confirm_order()
-    user_name()
-    user_number()
-    receipt()
+    # Get ....
+    selected_potato = select_potato()
+    
+
+    # Get .....
+    user_quantity_input = number_of_potato_orders()
+
+    # Get ....
+    user_confirm = confirm_order()
+    print(f'confirm_order: {user_confirm}')
+
+    # Get user_name variable
+    user_name = name()
+    
+
+    # Get phone_number variable
+    phone_number = number()
+
     receipt_result = receipt()
+
+
+    # Check all the variables
+    
+
+
+    receipt()
+    
     row = [
-        user_name, user_number, select_potato, number_of_potato_orders, price,
+        user_name, phone_number, selected_potato, user_quantity_input, price,
         receipt_result["time"], receipt_result["id"]
     ]
+    print(f'row: {row}')
     update_spreadsheet(row)
 
 
