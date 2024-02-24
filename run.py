@@ -287,7 +287,6 @@ def main():
 
     # Get ....
     user_confirm = confirm_order()
-    print(f'confirm_order: {user_confirm}')
 
     # Get user_name variable
     user_name = name()
@@ -298,8 +297,6 @@ def main():
     receipt_result = receipt()
 
     # Check all the variables
-
-    receipt()
 
     row = [
         user_name, phone_number, selected_potato, user_quantity_input, price,
