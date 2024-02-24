@@ -51,9 +51,38 @@ The potato option will also show the price for each option.
 Once the letter is entered the program will display a message of what type of potato chosen the user is given the option to pick what 
 topping they would like between 5 options. The user chooses the option by selected the corresponding number ot each option
 
-Once the user chooses the topping option a message will display what topping they choose.
+Once the user chooses the topping option a message will display what topping they choose
 
+### Quantity
 
+When the user has choosen their potato type and topping they will get the option to choose 
+a quantity between 1 and 10. Ad it is a food truck the orders cannot exceed 10
+
+The user will then need to click Y to confirm the order or N to to restart the order
+
+### User name
+
+The user will then be prompted to enter there name. The name must not have any spaces
+
+Once the name is enter a message will display the name the user entered
+
+### Phone number
+
+The user will then be prompted to enter their phone number. The phone number must be no longer than 11 digits
+
+### Order confirmation
+
+An order confirmation message will appear sating your order has been processed and gives a time 
+on when it will be ready
+
+### Receipt
+
+Once the order is confirmed a receipt will be shown to the customer with the address of Paul's Potatoes,
+the order number and time of the order
+
+### Google sheet
+
+The order info is added to the google sheet as seen below
 
 
 
