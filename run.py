@@ -108,6 +108,7 @@ def select_type():
             print("\nSorry, this is invalid.")
 
 
+
 def select_potato():
     """
     Function to select the potato topping
@@ -251,11 +252,11 @@ def receipt():
 
     return {"id": identity, "time": time}
 
-def update_spreadsheet():
+def update_spreadsheet(row):
     """
     Function to update google worksheet with users order info
     """
-    orders.append_row()
+    orders.append_row(row)
 
 
 def main():
@@ -265,14 +266,24 @@ def main():
     to run the code
     """
     greeting()
-    select_type()
+    
+    potato_type = select_type()
+    price = potato_type['price']
+    print(f'price == {price}')
+
     select_potato()
     number_of_potato_orders()
     confirm_order()
     user_name()
     user_number()
     receipt()
-    update_spreadsheet()
+    receipt_result = receipt()
+    row = [
+        user_name, user_number, select_potato, number_of_potato_orders, price,
+        receipt_result["time"], receipt_result["id"]
+    ]
+    update_spreadsheet(row)
+
 
 if __name__ == '__main__':
     main()
