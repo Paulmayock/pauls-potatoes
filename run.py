@@ -177,16 +177,53 @@ def confirm_order():
         user_confirm = input("Enter: \n")
         user_confirm = user_confirm.strip().upper()
         if user_confirm == "Y":
-            print("\nConfirmed! ")
+            print("\nYour order is confirmed! ")
             break
         elif user_confirm == "N":
-            print("\nLets try ordering again...\n")
+            print("\nPlease order again...\n")
             break
         else:
-            print("\nThat's not quite right")
+            print("\nYou have entered an incorrect key")
             print("Make sure you either entered Y or N\n")
 
     return user_confirm
+
+def user_name():
+    """
+    Function to get users full name
+    """
+    print("\nPlease add your details\n")
+    while True:
+        name = input("Enter your full name: \n").title()
+        if name.isalpha():
+            break
+        else:
+            print(
+                "\nPlease make sure you entered your "
+                "name correctly"
+            )
+            print("Try again\n")
+
+    return name    
+
+def user_number(name):
+    """
+    Function to collect user number
+    """
+    while True:
+        number = input("\nPlease eneter your phone number: \n")
+        if number.isdigit() and len(number) == 11:
+            print(
+                "\nThank you")
+            break
+        else:
+            print(
+                "\nPlease make sure you entered your "
+                "number correctly"
+            )
+            print("Try again")
+
+    return number
 
 def main():
     """
@@ -199,8 +236,8 @@ def main():
     select_potato()
     number_of_potato_orders()
     confirm_order()
+    user_name()
     
-
 
 if __name__ == '__main__':
     main()
