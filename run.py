@@ -1,8 +1,9 @@
-import gspread
-from google.oauth2.service_account import Credentials
 from datetime import datetime
 import uuid  # Taken from webdev to generate random order number
 import sys  # Allows the user to exit the system
+import gspread
+from google.oauth2.service_account import Credentials
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
