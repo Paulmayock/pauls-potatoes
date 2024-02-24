@@ -201,8 +201,7 @@ def name():
     print("\nPlease add your details\n")
     while True:
         name = input("Enter your name: \n").title()
-        print(f'name......{name}')
-        print(f'type......{type(name)}')
+        print(f'Name - {name}')
         if name.isalpha():
             break
         else:
@@ -305,6 +304,4 @@ def main():
     print(f'row: {row}')
     update_spreadsheet(row)
 
-
-if __name__ == '__main__':
     main()
