@@ -84,9 +84,22 @@ Flow chart to be added
 
 - The order info is added to the google sheet as seen below
 
-![](assests\goggle_spreadsheet.png)
+![](assests/goggle_spreadsheet.png)
 
 
+## Technologies
 
+- Python to write my programme
+- JavaScript provided in the Code Institute template
+- CSS provided in the Code Institute template
+- HTML provided in the Code Institute template
+- Google sheets to store the information
+- Heroku to deploy the project
 
+### Python Libraries
+
+- Datetime to add the time to the receipt and spreadsheet of when the order was placed
+- UUID to generate a random code to use as an order number
+- Sys to allow the user to exit the function
+- Gspread to link my google sheet for the owner to see the data of the orders
 
