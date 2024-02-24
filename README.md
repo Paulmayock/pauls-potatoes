@@ -15,3 +15,18 @@ is then transferred to a google sheet.
 - Each option choosen by the user should have the correct next step and follow up message
 - The program should access the right datasheet for all data in the orders sheet
 - The program should update the datasheet with the right values
+
+### User Goals
+
+- I want to easily navigate my way through the programme to select my order
+- I want to follow a chronological order that makes sense to order 
+- Display what the keys are for each step and let me know if I enter something incorrect
+- I want to know the prices of each order
+- I want to know the type of potato I choose and the type of toppings
+- I want the option of restarting my order in case I want to change my order
+- I want to receive a receipt of what I ordered
+
+### Owner Goals
+
+- I want a clear and easy to understand way of ordering online
+- I want the spreadsheet to be clear and easy to read.
