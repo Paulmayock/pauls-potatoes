@@ -240,7 +240,7 @@ def receipt():
     Function to generate a recipt
     """
     print(
-        "Thank you from Fred's Pizzas\n"
+        "Thank you for ordering from Paul's Potatoes\n"
         "Your order has been processed \n"
         "and will be ready for collection within 15 minutes!\n"
     )
