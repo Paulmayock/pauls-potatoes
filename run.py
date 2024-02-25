@@ -304,4 +304,5 @@ def main():
     print(f'row: {row}')
     update_spreadsheet(row)
 
+if __name__ == '__main__':
     main()
