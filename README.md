@@ -2,8 +2,15 @@
 
 Paul's Potaoes is a potato based food truck in the heart of Westport. The food truck lets the user pick from 3 types of potato
 fries, baked or roasties. The user then picks from a range of 5 toppings to add over their potato choice. This users order
-is then transferred to a google sheet.
+is then transferred to a google sheet
 
+![](assests/responsive.PNG)
+
+### Links
+
+- Website https://pauls-potatoes-a84274d78adf.herokuapp.com/
+
+- Google spreadsheet - https://docs.google.com/spreadsheets/d/1rW_2AhjOC0qPToSOdbb-RrZAfiR9R1AlcWi2h_NHc8I/edit#gid=0
 
 ## User experience
 
@@ -53,6 +60,10 @@ Flow chart to be added
 
 - Once the user chooses the topping option a message will display what topping they choose
 
+![](assests/potato_option.PNG)
+
+![](assests/topping_option.PNG)
+
 ### Quantity
 
 - When the user has choosen their potato type and topping they will get the option to choose 
@@ -60,15 +71,22 @@ Flow chart to be added
 
 - The user will then need to click Y to confirm the order or N to to restart the order
 
+![](assests/quantity_option.PNG)
+
+![](assests/confirm_order.PNG)
+
 ### User name
 
 - The user will then be prompted to enter there name. The name must not have any spaces
 
 - Once the name is enter a message will display the name the user entered
 
+![](assests/confirm_name_enter.PNG)
+
 ### Phone number
 
 - The user will then be prompted to enter their phone number. The phone number must be no longer than 11 digits
+
 
 ### Order confirmation
 
@@ -79,6 +97,8 @@ Flow chart to be added
 
 - Once the order is confirmed a receipt will be shown to the customer with the address of Paul's Potatoes,
   the order number and time of the order
+
+![](assests/receipt.PNG)  
 
 ### Google sheet
 
@@ -209,4 +229,11 @@ Create 1 Sheet titling it 'orders'
 
 - Heroku will notify you that the app was successfully deployed with a button to view the app
 
-- If you want to rebuild your app automatically you can also select the enable automatic deploys button which will then rebuild the app every time you push any changes
+
+## Credits
+
+- Code Institues project 3 run through love sandwiches
+
+- Stackoverflow for tips on for the user to exit order
+
+- Webdev used to generate random order number

@@ -101,7 +101,7 @@ def select_type():
         elif user_type_input in type_price:
             selected_type = type_price[user_type_input]
             print(
-                f"\nYou have chosen a {selected_type['name']} type potato for €{selected_type}\n"
+                f"\nYou have chosen a {selected_type['name']} type potato for €{selected_type['price']}\n"
             )
             return selected_type
         else:
@@ -157,6 +157,7 @@ def number_of_potato_orders():
         user_quantity_input = input("Enter quantity: \n")
 
         value = int(user_quantity_input)
+
 
         # user_quantity_input = user_quantity_input.strip().lower()
         if user_quantity_input == "e":
