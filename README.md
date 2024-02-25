@@ -107,6 +107,33 @@ Flow chart to be added
 
 ### Functions
 
-A list of testing can be seen below
+- A list of function testing can be seen below
 
 ![](assests/testing_spreadsheet.PNG)
+
+The following was tested to make sure code would run profiently:
+
+- Passed the code through a PEP8 linter
+- Tested in my local terminal and the Code Institute Heroku terminal
+
+![](assests/pepe.PNG)
+
+## Deployment
+
+The project was created using vs code and gitpod
+
+### Deploy from Github
+
+- Log into your GitHub repository
+- Click 'Settings' in the main Repository menu
+- Click 'Pages' from the left-hand side navigation menu
+- click the "Branch" button and change from 'None' to 'Main'
+- The page should automatically refresh with a url displayed
+- Test the link by clicking on the url
+
+### Create the google spreadsheet
+
+Login to your Google account, create an account if necessary
+Navigate to Sheets, Googles version of Microsoft Excel
+Start a new spreadsheet, amend the title at the top i.e., pauls_potatoes
+Create 1 Sheet titling it 'orders'
