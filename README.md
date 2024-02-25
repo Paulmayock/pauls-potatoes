@@ -103,3 +103,10 @@ Flow chart to be added
 - Sys to allow the user to exit the function
 - Gspread to link my google sheet for the owner to see the data of the orders
 
+## Testing
+
+### Functions
+
+A list of testing can be seen below
+
+![](assests/testing_spreadsheet.PNG)
