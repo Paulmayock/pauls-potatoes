@@ -41,7 +41,10 @@ is then transferred to a google sheet
 
 ## Design
 
-Flow chart to be added
+- Flow chart sketch
+
+![](assests/flowchart.jpeg)
+
 
 ## Features
 
@@ -228,6 +231,12 @@ Create 1 Sheet titling it 'orders'
 - To deploy, scroll down and click the deploy branch button
 
 - Heroku will notify you that the app was successfully deployed with a button to view the app
+
+## Bugs
+
+- When prompted to enter the potato quantity, if the user enters a string it will give an error message
+  instead of prompting the user to enter a number between 1 and 10.
+
 
 
 ## Credits
