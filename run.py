@@ -159,7 +159,7 @@ def number_of_potato_orders():
             print("We hope to see you soon again!")
             sys.exit()
             break
-        elif user_quantity_input >= str(1) and user_quantity_input <= str(10):
+        elif user_quantity_input <= str(1) and user_quantity_input <= str(10):
             print("\nYou have selected a quantity of", user_quantity_input)
             break
         else:
