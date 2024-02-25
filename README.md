@@ -137,3 +137,33 @@ Login to your Google account, create an account if necessary
 Navigate to Sheets, Googles version of Microsoft Excel
 Start a new spreadsheet, amend the title at the top i.e., pauls_potatoes
 Create 1 Sheet titling it 'orders'
+
+### API setup
+
+- Open Google cloud platform and sign in
+- From the google cloud platform dashboard click Select a new project. Then select new project
+- Create a name for your project then click Create
+- There should be a box with selct project, click this
+- From the sidebar navigate to APIs and services, library
+- In the search bar search for google drive
+- Select Google drive API and click enable
+- Click the create credentials button in the top of the page
+- From the dropdown menu under which API are you using? select Google drive API
+- Under what data will you be accessing choose application data
+- Under are you planning to use this API with Compute Engine, Kubernetes Engine, App Engine or Cloud Functions?' select 'No, i'm not using them and click next
+- Enter a service account name. Naming it the same as what you named your project  is suggested. Then click created and continue
+- In the role dropdown menu select basic, editor then click continue
+- The next page can be left blank so just click done
+- Under service accounts find the account you just created and click it
+- Find the keys tab and click add key, create new key. Select JSON and click create
+- This will download a json file to your machine
+- Link the Google Sheets API. Navigate back to the library by clicking on the burger icon in the top left hand corner and selecting APIs and services, library from the dropdown menu
+- In the search bar search for Google Sheets and select Google Sheets API' and click enable
+- Open or create a repository
+- Drag and drop the json file that you downloaded earlier into your workspace. Rename this file to creds.json
+- Open the file and copy the email address under client_email without the quotation marks
+- Open the google sheet you want to use and click the share
+- Paste in the client email. Make sure editor is selected, untick notify people and then click share
+- To protect sensitive information be sure to add your creds.json file to your .gitignore file inside your editor
+- In order to use our google sheets API you need to install two additional dependencies into your project.
+- Copy the following code on the first two lines of your workspace
