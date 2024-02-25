@@ -167,3 +167,46 @@ Create 1 Sheet titling it 'orders'
 - To protect sensitive information be sure to add your creds.json file to your .gitignore file inside your editor
 - In order to use our google sheets API you need to install two additional dependencies into your project.
 - Copy the following code on the first two lines of your workspace
+
+
+### Heroku
+
+- The requirements.txt file in the IDE must be updated to package all dependencies. To do this:
+
+- Enter the following into the terminal: 'pip3 freeze > requirements.txt'
+- Commit the changes and push to GitHub
+- Sign in to heroku
+
+- On the heroku dashboard click the create new app button
+
+- Name the app something unique and choose what region you are in then click create app
+
+- Go to the settings tab and the config ars section. Click reveal config vars
+
+- In the field for KEY enter the value CREDS in all capitals
+
+- In the field for VALUE copy and paste the entire contents of your creds.json file from your project. Then click add
+
+- In the field for KEY enter PORT in all capitals, then in the field for VALUE enter 8000. Then click add
+
+- Scroll down to the Buildpacks section and click add buildpack
+
+- Click Python then save changes
+
+- Add another buildpack by clicking add buildpack and this time click Nodejs then save changes
+
+- Make sure that Python appears above Nodejs in the buildpack section. If it does not you can click and drag them to change the order
+
+- Go to the deploy section by clicking deploy from the nav bar at the top of the page
+
+- On the deployment method section select GitHub and click connect to GitHub
+
+- Enter the repository name as it is in GitHub and click search
+
+- Click the connect button next to the repository to link it to heroku
+
+- To deploy, scroll down and click the deploy branch button
+
+- Heroku will notify you that the app was successfully deployed with a button to view the app
+
+- If you want to rebuild your app automatically you can also select the enable automatic deploys button which will then rebuild the app every time you push any changes

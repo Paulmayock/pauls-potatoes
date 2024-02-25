@@ -1,9 +1,8 @@
+import gspread
+from google.oauth2.service_account import Credentials
 from datetime import datetime
 import uuid  # Taken from webdev to generate random order number
 import sys  # Allows the user to exit the system
-import gspread
-from google.oauth2.service_account import Credentials
-
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -102,12 +101,12 @@ def select_type():
         elif user_type_input in type_price:
             selected_type = type_price[user_type_input]
             print(
-                f"\nYou have chosen a {selected_type['name']}"
-                " type potato for €{['price']}\n"
+                f"\nYou have chosen a {selected_type['name']} type potato for €{selected_type}\n"
             )
             return selected_type
         else:
             print("\nSorry, this is invalid.")
+
 
 
 def select_potato():
@@ -141,6 +140,8 @@ def select_potato():
                 "\nSorry this is invalid\n"
                 "Please enter number between 1-5 or E\n"
             )
+        
+
 
 
 def number_of_potato_orders():
@@ -154,12 +155,15 @@ def number_of_potato_orders():
     )
     while True:
         user_quantity_input = input("Enter quantity: \n")
-        user_quantity_input = user_quantity_input.strip().lower()
+
+        value = int(user_quantity_input)
+
+        # user_quantity_input = user_quantity_input.strip().lower()
         if user_quantity_input == "e":
             print("We hope to see you soon again!")
             sys.exit()
             break
-        elif user_quantity_input >= str(1) and user_quantity_input >= str(10):
+        elif value >= 1 and value <= 10:
             print("\nYou have selected a quantity of", user_quantity_input)
             break
         else:
@@ -167,7 +171,6 @@ def number_of_potato_orders():
                 "\nSorry please choose between 1 and 10\n"
             )
     return user_quantity_input
-
 
 def confirm_order():
     """
@@ -193,15 +196,15 @@ def confirm_order():
 
     return user_confirm
 
-
 def name():
     """
-    Function to get users name
+    Function to get users full name
     """
     print("\nPlease add your details\n")
     while True:
-        name = input("Enter your name: \n").title()
-        print(f'Name - {name}')
+        name = input("Enter your full name: \n").title()
+        print(f'name......{name}')
+        print(f'type......{type(name)}')
         if name.isalpha():
             break
         else:
@@ -211,8 +214,7 @@ def name():
             )
             print("Try again\n")
 
-    return name
-
+    return name    
 
 def number():
     """
@@ -233,13 +235,12 @@ def number():
 
     return number
 
-
 def receipt():
     """
     Function to generate a recipt
     """
     print(
-        "Thank you for ordering from Paul's Potatoes\n"
+        "Thank you from Fred's Pizzas\n"
         "Your order has been processed \n"
         "and will be ready for collection within 15 minutes!\n"
     )
@@ -258,7 +259,6 @@ def receipt():
 
     return {"id": identity, "time": time}
 
-
 def update_spreadsheet(row):
     """
     Function to update google worksheet with users order info
@@ -273,30 +273,39 @@ def main():
     to run the code
     """
     greeting()
-
+    
     # Get potato_type variable
     potato_type = select_type()
     price = potato_type['price']
+    
 
     # Get ....
     selected_potato = select_potato()
+    
 
     # Get .....
     user_quantity_input = number_of_potato_orders()
 
     # Get ....
     user_confirm = confirm_order()
+    print(f'confirm_order: {user_confirm}')
 
     # Get user_name variable
     user_name = name()
+    
 
     # Get phone_number variable
     phone_number = number()
 
     receipt_result = receipt()
 
-    # Check all the variables
 
+    # Check all the variables
+    
+
+
+    receipt()
+    
     row = [
         user_name, phone_number, selected_potato, user_quantity_input, price,
         receipt_result["time"], receipt_result["id"]
