@@ -101,8 +101,8 @@ def select_type():
         elif user_type_input in type_price:
             selected_type = type_price[user_type_input]
             print(
-                f"\nYou have chosen a {selected_type['name']}"
-                "type potato for €{selected_type['price']}\n"
+               f"\nYou have chosen a {selected_type['name']}"
+                " type potato\n"
             )
             return selected_type
         else:
@@ -202,9 +202,8 @@ def name():
     """
     print("\nPlease add your details\n")
     while True:
-        name = input("Enter your full name: \n").title()
-        print(f'name......{name}')
-        print(f'type......{type(name)}')
+        name = input("Enter your name: \n").title()
+        print(f'Name......{name}')
         if name.isalpha():
             break
         else:
